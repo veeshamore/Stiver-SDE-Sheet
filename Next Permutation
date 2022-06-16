@@ -1,0 +1,23 @@
+#include <bits/stdc++.h> 
+vector<int> nextPermutation(vector<int> &perm, int n)
+{
+    //  Write your code here.
+    int k,l;
+    for(k=n-2;k>=0;k--){
+        if(perm[k]<perm[k+1])
+            break;
+    }
+    if(k<0){
+        reverse(perm.begin(), perm.end());
+        return perm;
+    }
+    else{
+        for(l=n-1;l>k;l--){
+            if(perm[l]>perm[k])
+                break;
+        }
+        swap(perm[k],perm[l]);
+        reverse(perm.begin()+k+1, perm.end());
+        return perm;
+    }
+}
